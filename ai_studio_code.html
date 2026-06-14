@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoSolo BH | BioRegeneração Urbana</title>
+    
+    <!-- Google Fonts Editorial Luxury -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1A3C34; /* Deep Forest Massalas */
+            --accent: #B36D4D;  /* Earth Terracotta */
+            --bg-light: #F9F7F2; 
+            --bg-dark: #0D1F1A;  
+            --text-main: #2A2A2A;
+            --white: #FFFFFF;
+            --transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; font-weight: 400; }
+        em { font-style: italic; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+
+        /* Navbar Editorial Minimal */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; padding: 2.2rem 0; z-index: 1000;
+            transition: var(--transition);
+        }
+        nav.scrolled {
+            background: rgba(249, 247, 242, 0.98);
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(26, 60, 52, 0.05);
+        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; letter-spacing: 5px;
+            color: var(--primary); text-decoration: none; font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Hero (Foco Typográfico Editorial) */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at top right, #e8ede8, transparent), var(--bg-light);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            line-height: 1.05; color: var(--primary);
+            margin-bottom: 2rem; max-width: 1100px;
+        }
+        .hero-title em { color: var(--accent); }
+        .hero-meta {
+            text-transform: uppercase; letter-spacing: 6px;
+            font-size: 0.7rem; display: block; margin-bottom: 1.5rem;
+            font-weight: 600; color: var(--accent);
+        }
+
+        .btn-lux {
+            padding: 1.5rem 3.5rem;
+            background: var(--primary); color: var(--white);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 3px; font-size: 0.7rem;
+            transition: var(--transition); display: inline-block;
+            border: none; cursor: pointer; text-align: center;
+        }
+        .btn-lux:hover { letter-spacing: 5px; background: var(--accent); }
+        .btn-lux:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Problem Section */
+        .problem { background-color: var(--bg-dark); color: var(--bg-light); padding: 150px 0; }
+        .grid-problem { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; margin-top: 6rem; }
+        .problem-card { border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem; }
+        .problem-card h3 { font-size: 1.6rem; margin-bottom: 1.5rem; color: var(--accent); }
+
+        /* Solutions: Editorial Step-by-Step with Your Images */
+        .solution { padding: 150px 0; }
+        .step { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; align-items: center; margin-bottom: 150px; }
+        .step:nth-child(even) { direction: rtl; }
+        .step:nth-child(even) .step-text { direction: ltr; }
+
+        .step-img-wrap {
+            position: relative; overflow: hidden; background: #E5E0D8;
+            aspect-ratio: 4/5; transition: var(--transition);
+        }
+        .step-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 2s ease; }
+        .step-img-wrap:hover img { transform: scale(1.1); }
+
+        .step-number { font-family: 'Playfair Display'; font-size: 4rem; color: var(--accent); opacity: 0.15; line-height: 1; }
+        .step-text h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 1.5rem 0; color: var(--primary); }
+
+        /* Section: Functional Validations */
+        .interest-form-section {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            padding: 150px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-wrapper { max-width: 700px; margin: 4rem auto 0 auto; position: relative; }
+        
+        .form-group { margin-bottom: 3.5rem; position: relative; }
+        
+        .form-group label {
+            display: block; font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--accent); margin-bottom: 1.2rem; font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%; background: transparent; border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0; color: var(--white); font-family: 'Montserrat', sans-serif;
+            font-size: 1rem; font-weight: 300; transition: border-color 0.5s ease;
+        }
+        .form-control:focus { outline: none; border-bottom-color: var(--accent); }
+
+        /* CUSTOM RADIO BUTTONS LUX */
+        .radio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .radio-option {
+            position: relative;
+        }
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        .radio-label-btn {
+            display: block;
+            padding: 1.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .radio-option input[type="radio"]:checked + .radio-label-btn {
+            border-color: var(--accent);
+            background: rgba(179, 109, 77, 0.15);
+            color: var(--white);
+        }
+
+        /* Success & Status states */
+        [data-fs-success] { display: none; text-align: center; padding: 4rem 0; }
+        .fs-is-success #marketForm { display: none; }
+        .fs-is-success [data-fs-success] { display: block; }
+
+        .ufmg-notice {
+            margin-top: 4rem; font-size: 0.85rem; font-weight: 300;
+            opacity: 0.5; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 2rem; line-height: 1.8;
+        }
+
+        footer { background: var(--bg-dark); color: white; padding: 100px 0 50px; text-align: center; }
+        .footer-logo { font-size: 2rem; letter-spacing: 10px; font-weight: 700; color: white; text-decoration: none; margin-bottom: 2rem; display: block; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 992px) {
+            .step { grid-template-columns: 1fr; gap: 3rem; }
+            .radio-grid { grid-template-columns: 1fr; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">TECNOSOLO BH</a>
+            <a href="#interesse" class="btn-lux" style="padding: 0.8rem 1.8rem; font-size: 0.65rem;">Interesse</a>
+        </div>
+    </nav>
+
+    <!-- HERO Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="reveal">
+                <span class="hero-meta">Economia Circular Urbana</span>
+                <h1 class="hero-title">O solo de BH clama por uma nova <em>ciência</em>.</h1>
+                <p style="max-width: 550px; margin-bottom: 3.5rem; font-weight: 300;">Recuperamos resíduos urbanos para regenerar a vida local.</p>
+                <a href="#fluxo" class="btn-lux">Explore a Jornada</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context (Black Deep) -->
+    <section class="problem">
+        <div class="container">
+            <span class="hero-meta" style="color: var(--accent);">Contexto</span>
+            <h2 class="reveal serif" style="font-size: clamp(2rem, 5vw, 3.5rem);">Belo Horizonte pede <em>vitalidade</em>.</h2>
+            <div class="grid-problem">
+                <div class="problem-card reveal">
+                    <h3>Impacto</h3>
+                    <p style="opacity: 0.6;">Resíduos orgânicos em aterros geram metano, impactando diretamente o ecossistema mineiro.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <h3>Necessidade</h3>
+                    <p style="opacity: 0.6;">Agricultores locais dependem de fertilizantes sintéticos caros e empobrecidos de microbiologia.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <h3>Cura</h3>
+                    <p style="opacity: 0.6;">Nossa biotecnologia fecha o ciclo da vida, transformando desperdício em riqueza fértil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS GALLERY -->
+    <section id="fluxo" class="solution">
+        <div class="container">
+            
+            <!-- Step 01: Imagem Composto/Resíduo -->
+            <div class="step reveal">
+                <div class="step-img-wrap">
+                    <img src="https://i.ibb.co/C3D1thmq/couleur-compost-3663514.jpg" 
+                         alt="Origem orgânica" 
+                         referrerpolicy="no-referrer">
+                </div>
+                <div class="step-text">
+                    <span class="step-number">01</span>
+                    <h2>Matéria em <em>Potencial</em></h2>
+                    <p>Capturamos o potencial nutricional urbano nos geradores estratégicos da capital, garantindo a rastreabilidade total da biomassa.</p>
+                </div>
+            </div>
+
+            <!-- Step 02: Greenhouse (Cuidado Biotec) -->
+            <div class="step reveal">
+                <div class="step-img-wrap">
+                    <img src="https://i.ibb.co/Zz6chCzV/katya-ershova-greenhouse-6226263.jpg" 
+                         alt="Processo controlado TecnoSolo" 
+                         referrerpolicy="no-referrer">
+                </div>
+                <div class="step-text">
+                    <span class="step-number">02</span>
+                    <h2>Aceleração <em>Vital</em></h2>
+                    <p>Otimização biológica via microrganismos aceleradores. Convertemos massa crua em fertilidade mineral de alto rendimento.</p>
+                </div>
+            </div>
+
+            <!-- Step 03: Potatoes/Abundância Final -->
+            <div class="step reveal">
+                <div class="step-img-wrap">
+                    <img src="https://i.ibb.co/sJwG4WP3/pexels-potatoes-1866415.jpg" 
+                         alt="Resultados em colheitas locais" 
+                         referrerpolicy="no-referrer">
+                </div>
+                <div class="step-text">
+                    <span class="step-number">03</span>
+                    <h2>Fartura <em>Regenerada</em></h2>
+                    <p>O resultado volta para as mesas de Belo Horizonte. Solo nutrido entrega colheitas mais densas e resilientes ao cinturão verde.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VALIDATION FORM Section (AJAX) -->
+    <section id="interesse" class="interest-form-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="hero-meta" style="color: var(--accent);">Pesquisa de Campo UFMG</span>
+                <h2 class="reveal serif" style="font-size: clamp(2.5rem, 5vw, 3rem);">Você acredita nesta <em>inovação</em>?</h2>
+            </div>
+
+            <div class="form-wrapper reveal">
+                
+                <!-- SUCCESS Feedback Message -->
+                <div data-fs-success>
+                    <div style="text-align: center; padding: 4rem 0;">
+                        <h3 class="serif" style="color: var(--accent); font-size: 3rem; margin-bottom: 1.5rem;">Recebido.</h3>
+                        <p style="opacity: 0.8; font-weight: 300;">Obrigado por apoiar a validação desta proposta acadêmica. Retornaremos em breve com novidades.</p>
+                    </div>
+                </div>
+
+                <!-- AJAX Functional Form -->
+                <form id="marketForm">
+                    <div class="form-group">
+                        <label>Nome ou Razão Social</label>
+                        <input type="text" name="nome" class="form-control" placeholder="..." data-fs-field required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-mail Corporativo/Pessoal</label>
+                        <input type="email" name="email" class="form-control" placeholder="..." data-fs-field required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Qual sua percepção de interesse?</label>
+                        <div class="radio-grid">
+                            <div class="radio-option">
+                                <input type="radio" id="res_yes" name="interesse" value="Sim" data-fs-field required>
+                                <label for="res_yes" class="radio-label-btn">Tenho Interesse</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="res_no" name="interesse" value="Não" data-fs-field>
+                                <label for="res_no" class="radio-label-btn">Sem Interesse</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 3.5rem;">
+                        <button type="submit" data-fs-submit-btn class="btn-lux">Registrar Escolha</button>
+                    </div>
+                </form>
+
+                <div class="ufmg-notice">
+                    Esta sondagem compõe o estudo de mercado acadêmico desenvolvido para fins de validação técnica junto à <strong>UFMG</strong>. Os dados coletados são confidenciais e protegidos.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fundadores (Elegance/Editorial) -->
+    <section class="team" style="padding-bottom: 150px;">
+        <div class="container reveal">
+            <span class="hero-meta" style="margin-bottom: 3.5rem; display: block; text-align: center;">Mentes Responsáveis</span>
+            <div style="text-align: center; font-size: 0.9rem; letter-spacing: 2px;">
+                <span class="member-name">Ana Beatriz Almeida</span>
+                <span class="member-name">Carlos Marinho</span>
+                <span class="member-name">Eduarda Braga</span>
+                <span class="member-name">Jéssica Pereira</span>
+                <span class="member-name">Jéssica Parreiras</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo serif">TECNOSOLO</a>
+            <p style="opacity: 0.4; font-size: 0.7rem; letter-spacing: 6px;">REGENERATIVO &bull; BH &bull; 2026</p>
+        </div>
+    </footer>
+
+    <!-- Formspree Integration SDK -->
+    <script>
+        // Init SDK with your specific ID
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#marketForm', formId: 'xdavpovo' });
+
+        // Smooth Scroll & Header State
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            nav.classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        // Massalas Reveal Logic
+        const reveal = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => reveal.observe(el));
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
