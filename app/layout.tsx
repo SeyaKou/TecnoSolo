@@ -33,18 +33,6 @@ export const metadata: Metadata = {
     "Regeneração de Solo",
   ],
   robots: "index, follow",
-  authors: [{ name: "Tecnosolo BH" }],
-  creator: "Tecnosolo BH",
-  publisher: "Tecnosolo BH",
-  formatDetection: {
-    email: false,
-    telephone: false,
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   openGraph: {
     title: "Tecnosolo BH | Economia Circular e Regeneração de Resíduos Urbanos",
     description:
@@ -54,20 +42,8 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Tecnosolo BH | Economia Circular",
-    description:
-      "Recuperamos resíduos urbanos para regenerar a vida local em Belo Horizonte.",
-  },
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-  alternates: {
-    languages: {
-      "pt-BR": siteUrl,
-    },
   },
 };
 
@@ -94,16 +70,6 @@ export default function RootLayout({
               url: siteUrl,
               description:
                 "Economia circular e regeneração de resíduos urbanos em Belo Horizonte",
-              sameAs: [
-                // Adicione suas redes sociais aqui
-                // "https://www.instagram.com/tecnosolo",
-                // "https://www.facebook.com/tecnosolo",
-              ],
-              contactPoint: {
-                "@type": "ContactPoint",
-                contactType: "Customer Service",
-                // Adicione seu telefone/email aqui
-              },
             }),
           }}
         />
